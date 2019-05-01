@@ -30,3 +30,4 @@ selenium-debug.log
 # -----------------------------------------------------------------------------
 
 server/node_modules/
+server/config.json

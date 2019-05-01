@@ -1,0 +1,79 @@
+let Bookmark = require('../models/bookmark');
+
+// Create a bookmark
+exports.create = (req, res) => {
+    let bookmark = new Bookmark(
+        {
+            url: req.body.url,
+            title: req.body.title,
+            description: req.body.description
+        }
+    );
+
+    bookmark.save(error => {
+        if (error) console.error(error);
+
+        res.send({
+            success: true,
+            message: 'Bookmark saved successfully !'
+        });
+    });
+};
+
+// Fetch all bookmarks
+exports.fetchAll = (req, res) => {
+    Bookmark.find({}, 'title description', (error, posts) => {
+        if (error) console.error(error);
+
+        res.send({
+            success: true,
+            posts: posts
+        });
+    });
+};
+
+// Fetch a single bookmark
+exports.fetchSingle = (req, res) => {
+    Bookmark.find({}, 'title description', (error, posts) => {
+        if (error) console.error(error);
+
+        res.send({
+            success: true,
+            posts: posts
+        });
+    });
+};
+
+// Update a bookmark
+exports.update = (req, res) => {
+    Bookmark.findById(req.params.id, 'title description', (error, bookmark) => {
+        if (error) console.error(error);
+
+        bookmark.url = req.body.url;
+        bookmark.title = req.body.title;
+        bookmark.description = req.body.description;
+
+        bookmark.save(error => {
+            if (error) console.error(error);
+
+            res.send({
+                success: true,
+                message: 'Bookmark saved successfully !'
+            });
+        });
+    })
+};
+
+// Delete a bookmark
+exports.delete = (req, res) => {
+    Bookmark.remove({
+        _id: req.params.id
+    }, (error, bookmark) => {
+        if (error) console.error(error);
+
+        res.send({
+            success: true,
+            message: 'Bookmark deleted successfully !'
+        });
+    });
+};
