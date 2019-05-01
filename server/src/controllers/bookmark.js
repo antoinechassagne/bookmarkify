@@ -15,14 +15,14 @@ exports.create = (req, res) => {
 
         res.send({
             success: true,
-            message: 'Bookmark saved successfully !'
+            message: `${bookmark.title} created successfully !`
         });
     });
 };
 
 // Fetch all bookmarks
 exports.fetchAll = (req, res) => {
-    Bookmark.find({}, 'title description', (error, posts) => {
+    Bookmark.find((error, posts) => {
         if (error) console.error(error);
 
         res.send({
@@ -34,7 +34,7 @@ exports.fetchAll = (req, res) => {
 
 // Fetch a single bookmark
 exports.fetchSingle = (req, res) => {
-    Bookmark.find({}, 'title description', (error, posts) => {
+    Bookmark.find((error, posts) => {
         if (error) console.error(error);
 
         res.send({
@@ -46,19 +46,19 @@ exports.fetchSingle = (req, res) => {
 
 // Update a bookmark
 exports.update = (req, res) => {
-    Bookmark.findById(req.params.id, 'title description', (error, bookmark) => {
+    Bookmark.findById(req.params.id, 'url title description', (error, bookmark) => {
         if (error) console.error(error);
 
         bookmark.url = req.body.url;
         bookmark.title = req.body.title;
         bookmark.description = req.body.description;
 
-        bookmark.save(error => {
+        bookmark.save((error, bookmark) => {
             if (error) console.error(error);
 
             res.send({
                 success: true,
-                message: 'Bookmark saved successfully !'
+                message: `${bookmark.title} updated successfully !`
             });
         });
     })
@@ -73,7 +73,7 @@ exports.delete = (req, res) => {
 
         res.send({
             success: true,
-            message: 'Bookmark deleted successfully !'
+            message: `Bookmark deleted successfully !`
         });
     });
 };
