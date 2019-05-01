@@ -66,7 +66,7 @@ exports.update = (req, res) => {
 
 // Delete a bookmark
 exports.delete = (req, res) => {
-    Bookmark.remove({
+    Bookmark.deleteOne({
         _id: req.params.id
     }, (error, bookmark) => {
         if (error) console.error(error);
