@@ -4,14 +4,14 @@ const bookmarkController = require('../controllers/bookmark');
 
 // Routes
 
-router.post('/create', bookmarkController.create);
+router.post('/bookmarks/add', bookmarkController.create);
 
 router.get('/bookmarks', bookmarkController.fetchAll);
 
-router.get('/:id', bookmarkController.fetchSingle);
+router.get('bookmarks/:id', bookmarkController.fetchSingle);
 
-router.put('/:id/update', bookmarkController.update);
+router.put('bookmarks/:id/update', bookmarkController.update);
 
-router.delete('/:id/delete', bookmarkController.delete);
+router.delete('bookmarks/:id/delete', bookmarkController.delete);
 
 module.exports = router;
