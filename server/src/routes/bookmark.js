@@ -8,10 +8,10 @@ router.post('/bookmarks/add', bookmarkController.create);
 
 router.get('/bookmarks', bookmarkController.fetchAll);
 
-router.get('bookmarks/:id', bookmarkController.fetchSingle);
+router.get('/bookmarks/:id', bookmarkController.fetchSingle);
 
-router.put('bookmarks/:id/update', bookmarkController.update);
+router.put('/bookmarks/edit/:id', bookmarkController.update);
 
-router.delete('bookmarks/:id/delete', bookmarkController.delete);
+router.delete('/bookmarks/delete/:id', bookmarkController.delete);
 
 module.exports = router;

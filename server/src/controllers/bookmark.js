@@ -34,12 +34,12 @@ exports.fetchAll = (req, res) => {
 
 // Fetch a single bookmark
 exports.fetchSingle = (req, res) => {
-    Bookmark.find((error, bookmarks) => {
+    Bookmark.findById(req.params.id,  'url title description', (error, bookmark) => {
         if (error) console.error(error);
 
         res.send({
             success: true,
-            bookmarks: bookmarks
+            bookmark: bookmark
         });
     });
 };

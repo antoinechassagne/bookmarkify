@@ -3,10 +3,10 @@
     <h1>
       Bookmarks
     </h1>
-    <h2>
-      Check all your bookmarks
-    </h2>
     <div v-if="bookmarks.length > 0" class="bookmarks-list">
+      <h2>
+        Check all your bookmarks
+      </h2>
       <div v-for="bookmark in bookmarks" class="bookmark">
         <h3>
           {{ bookmark.title }}
@@ -17,6 +17,9 @@
         <a v-bind:href="'//' + bookmark.url">
           {{ bookmark.url }}
         </a>
+        <router-link v-bind:to="{ name: 'EditBookmark', params: { id: bookmark._id } }">
+          Edit
+        </router-link>
       </div>
     </div>
     <div v-else>
