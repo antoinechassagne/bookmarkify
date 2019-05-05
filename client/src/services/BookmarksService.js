@@ -15,5 +15,9 @@ export default {
 
   editBookmark (params) {
     return Api().put(`bookmarks/edit/${params.id}`, params)
+  },
+
+  deleteBookmark (id) {
+    return Api().delete(`bookmarks/delete/${id}`)
   }
 }

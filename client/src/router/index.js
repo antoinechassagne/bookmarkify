@@ -5,7 +5,6 @@ import Bookmarks from '@/components/Bookmarks'
 import AddBookmark from '@/components/AddBookmark'
 import EditBookmark from '@/components/EditBookmark'
 
-
 Vue.use(Router)
 
 export default new Router({

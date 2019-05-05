@@ -20,6 +20,9 @@
         <router-link v-bind:to="{ name: 'EditBookmark', params: { id: bookmark._id } }">
           Edit
         </router-link>
+        <a href="#" @click="deleteBookmark(bookmark._id)">
+          Delete
+        </a>
       </div>
     </div>
     <div v-else>
@@ -47,9 +50,17 @@
       this.getBookmarks()
     },
     methods: {
-      async getBookmarks() {
+      async getBookmarks () {
         const response = await BookmarksService.fetchBookmarks()
         this.bookmarks = response.data.bookmarks
+      },
+
+    async deleteBookmark (id) {
+      await BookmarksService.deleteBookmark(id)
+      this.getBookmarks()
+      this.$router.push({
+          name: 'Bookmarks'
+        })
       }
     }
   }
