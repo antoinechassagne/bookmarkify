@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const mongoose = require('mongoose');
 const fs = require('fs');
 const bookmark = require('./routes/bookmark');
@@ -21,6 +22,7 @@ db.once("open", () => console.log("Database connection succeeded"));
 // App settings & launch ------------------------------------------------------
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors());
 
 app.use('/api', bookmark);
 

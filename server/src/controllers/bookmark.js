@@ -22,24 +22,24 @@ exports.create = (req, res) => {
 
 // Fetch all bookmarks
 exports.fetchAll = (req, res) => {
-    Bookmark.find((error, posts) => {
+    Bookmark.find((error, bookmarks) => {
         if (error) console.error(error);
 
         res.send({
             success: true,
-            posts: posts
+            bookmarks: bookmarks
         });
     });
 };
 
 // Fetch a single bookmark
 exports.fetchSingle = (req, res) => {
-    Bookmark.find((error, posts) => {
+    Bookmark.find((error, bookmarks) => {
         if (error) console.error(error);
 
         res.send({
             success: true,
-            posts: posts
+            bookmarks: bookmarks
         });
     });
 };
