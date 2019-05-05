@@ -19,6 +19,11 @@ export default new Router({
       path: '/bookmarks',
       name: 'Bookmarks',
       component: Bookmarks
+    },
+    {
+      path: '/bookmarks/add',
+      name: 'AddBookmark',
+      component: AddBookmark
     }
   ]
 })

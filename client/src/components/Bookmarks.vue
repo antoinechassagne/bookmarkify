@@ -1,6 +1,8 @@
 <template>
   <div class="bookmark-page">
-    <h1>Bookmarks</h1>
+    <h1>
+      Bookmarks
+    </h1>
     <h2>
       Check all your bookmarks
     </h2>
@@ -9,7 +11,6 @@
         <h3>
           {{ bookmark.title }}
         </h3>
-        </p>
         <p>
           {{ bookmark.description }}
         </p>
@@ -20,9 +21,12 @@
     </div>
     <div v-else>
       <h2>
-        There are no bookmarks yet...<br/>
+        There are no bookmarks yet...
       </h2>
     </div>
+    <router-link v-bind:to="{ name: 'AddBookmark' }" class="button">
+      Add Post
+    </router-link>
   </div>
 </template>
 
