@@ -23,25 +23,26 @@
 </template>
 
 <script>
-  import BookmarksService from '@/services/BookmarksService'
-  export default {
-    name: 'AddBookmark',
-    data () {
-      return {
-        title: '',
-        description: '',
-        url: ''
-      }
+import BookmarksService from '@/services/BookmarksService';
+
+export default {
+  name: 'AddBookmark',
+  data() {
+    return {
+      title: '',
+      description: '',
+      url: '',
+    };
+  },
+  methods: {
+    async addBookmark() {
+      await BookmarksService.addBookmark({
+        title: this.title,
+        description: this.description,
+        url: this.url,
+      });
+      this.$router.push({ name: 'Bookmarks' });
     },
-    methods: {
-      async addBookmark () {
-        await BookmarksService.addBookmark({
-          title: this.title,
-          description: this.description,
-          url: this.url
-        })
-        this.$router.push({ name: 'Bookmarks' })
-      }
-    }
-  }
+  },
+};
 </script>

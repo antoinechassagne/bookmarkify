@@ -15,11 +15,11 @@
 <script>
 export default {
   name: 'Home',
-  data () {
+  data() {
     return {
       title: 'Welcome to Bookmarkify',
-      description: 'Bookmarkify is an app that allows you to save useful bookmarks that you want to keep.'
-    }
-  }
-}
+      description: 'Bookmarkify is an app that allows you to save useful bookmarks that you want to keep.',
+    };
+  },
+};
 </script>

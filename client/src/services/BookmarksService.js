@@ -1,23 +1,23 @@
-import Api from '@/services/Api'
+import Api from '@/services/Api';
 
 export default {
-  fetchBookmarks () {
-    return Api().get('bookmarks')
+  fetchBookmarks() {
+    return Api().get('bookmarks');
   },
 
-  fetchSingleBookmark (params) {
-    return Api().get(`bookmarks/${params.id}`, params)
+  fetchSingleBookmark(params) {
+    return Api().get(`bookmarks/${params.id}`, params);
   },
 
-  addBookmark (params) {
-    return Api().post('bookmarks/add', params)
+  addBookmark(params) {
+    return Api().post('bookmarks/add', params);
   },
 
-  editBookmark (params) {
-    return Api().put(`bookmarks/edit/${params.id}`, params)
+  editBookmark(params) {
+    return Api().put(`bookmarks/edit/${params.id}`, params);
   },
 
-  deleteBookmark (id) {
-    return Api().delete(`bookmarks/delete/${id}`)
-  }
-}
+  deleteBookmark(id) {
+    return Api().delete(`bookmarks/delete/${id}`);
+  },
+};

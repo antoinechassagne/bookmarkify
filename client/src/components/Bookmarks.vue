@@ -7,7 +7,7 @@
       <h2>
         Check all your bookmarks
       </h2>
-      <div v-for="bookmark in bookmarks" class="bookmark">
+      <div v-for="bookmark in bookmarks" v-bind:key="bookmark" class="bookmark">
         <h3>
           {{ bookmark.title }}
         </h3>
@@ -37,31 +37,30 @@
 </template>
 
 <script>
-  import BookmarksService from '@/services/BookmarksService'
+import BookmarksService from '@/services/BookmarksService';
 
-  export default {
-    name: 'bookmarks',
-    data() {
-      return {
-        bookmarks: []
-      }
+export default {
+  name: 'bookmarks',
+  data() {
+    return {
+      bookmarks: [],
+    };
+  },
+  mounted() {
+    this.getBookmarks();
+  },
+  methods: {
+    async getBookmarks() {
+      const response = await BookmarksService.fetchBookmarks();
+      this.bookmarks = response.data.bookmarks;
     },
-    mounted() {
-      this.getBookmarks()
-    },
-    methods: {
-      async getBookmarks () {
-        const response = await BookmarksService.fetchBookmarks()
-        this.bookmarks = response.data.bookmarks
-      },
-
-    async deleteBookmark (id) {
-      await BookmarksService.deleteBookmark(id)
-      this.getBookmarks()
+    async deleteBookmark(id) {
+      await BookmarksService.deleteBookmark(id);
+      this.getBookmarks();
       this.$router.push({
-          name: 'Bookmarks'
-        })
-      }
-    }
-  }
+        name: 'Bookmarks',
+      });
+    },
+  },
+};
 </script>

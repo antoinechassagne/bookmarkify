@@ -1,7 +1,7 @@
 {
   "name": "bookmarkify-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "A bookmarks system",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js src/app.js",
