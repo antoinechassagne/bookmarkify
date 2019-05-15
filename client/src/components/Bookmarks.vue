@@ -7,7 +7,7 @@
       <h2>
         Check all your bookmarks
       </h2>
-      <div v-for="bookmark in bookmarks" v-bind:key="bookmark" class="bookmark">
+      <div v-for="(bookmark, index) in bookmarks" v-bind:key="index" class="bookmark">
         <h3>
           {{ bookmark.title }}
         </h3>
