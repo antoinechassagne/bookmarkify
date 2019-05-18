@@ -54,7 +54,7 @@ exports.fetchAll = (req, res) => {
 
 // Fetch a single bookmark
 exports.fetchSingle = (req, res) => {
-    Bookmark.findById(req.params.id,  'url title description', (error, bookmark) => {
+    Bookmark.findById(req.params.id, (error, bookmark) => {
         if (error) console.error(error);
 
         res.send({
@@ -66,7 +66,7 @@ exports.fetchSingle = (req, res) => {
 
 // Update a bookmark
 exports.update = (req, res) => {
-    Bookmark.findById(req.params.id, 'url title description', (error, bookmark) => {
+    Bookmark.findById(req.params.id, (error, bookmark) => {
         if (error) console.error(error);
 
         let categories, tags;
