@@ -4,14 +4,15 @@ let Bookmark = require('../models/bookmark');
 exports.create = (req, res) => {
     let categories, tags;
 
-    if (req.body.categories && req.body.categories.isArray) {
+    if (req.body.categories !== undefined) {
         categories = req.body.categories.map( category => {
             return {
                 'name': category
             };
         });
     }
-    if (req.body.tags && req.body.tags.isArray) {
+
+    if (req.body.tags !== undefined) {
         tags = req.body.tags.map( tag => {
             return {
                 'name': tag
@@ -70,14 +71,15 @@ exports.update = (req, res) => {
 
         let categories, tags;
 
-        if (req.body.categories && req.body.categories.isArray) {
+        if (req.body.categories !== undefined) {
             categories = req.body.categories.map( category => {
                 return {
                     'name': category
                 };
             });
         }
-        if (req.body.tags && req.body.tags.isArray) {
+
+        if (req.body.tags !== undefined) {
             tags = req.body.tags.map( tag => {
                 return {
                     'name': tag
