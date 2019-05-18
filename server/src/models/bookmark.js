@@ -19,7 +19,19 @@ const BookmarkSchema = new Schema({
         type: Date,
         required: false,
         default: new Date()
-    }
+    },
+    categories: [{
+        name: {
+            type: String,
+            required: false
+        }
+    }],
+    tags: [{
+        name: {
+            type: String,
+            required: false
+        }
+    }]
 });
 
 // Set the schema as a model 'Bookmark'

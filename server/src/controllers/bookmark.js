@@ -2,11 +2,25 @@ let Bookmark = require('../models/bookmark');
 
 // Create a bookmark
 exports.create = (req, res) => {
+    let categories = req.body.categories.map( category => {
+        return {
+            'name': category
+        };
+    });
+
+    let tags = req.body.tags.map( tag => {
+        return {
+            'name': tag
+        };
+    });
+
     let bookmark = new Bookmark(
         {
             url: req.body.url,
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            categories: categories,
+            tags: tags
         }
     );
 
@@ -49,9 +63,23 @@ exports.update = (req, res) => {
     Bookmark.findById(req.params.id, 'url title description', (error, bookmark) => {
         if (error) console.error(error);
 
+        let categories = req.body.categories.map( category => {
+            return {
+                'name': category
+            };
+        });
+
+        let tags = req.body.tags.map( tag => {
+            return {
+                'name': tag
+            };
+        });
+
         bookmark.url = req.body.url;
         bookmark.title = req.body.title;
         bookmark.description = req.body.description;
+        bookmark.categories = categories;
+        bookmark.tags = tags;
 
         bookmark.save((error, bookmark) => {
             if (error) console.error(error);
