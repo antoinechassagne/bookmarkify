@@ -10,14 +10,14 @@ export default {
   },
 
   addBookmark(params) {
-    return Api().post('bookmarks/add', params);
+    return Api().post('bookmarks', params);
   },
 
   editBookmark(params) {
-    return Api().put(`bookmarks/edit/${params.id}`, params);
+    return Api().put(`bookmarks/${params.id}`, params);
   },
 
   deleteBookmark(id) {
-    return Api().delete(`bookmarks/delete/${id}`);
+    return Api().delete(`bookmarks/${id}`);
   },
 };
