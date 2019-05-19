@@ -18,7 +18,12 @@
       <div>
         <ul v-if="categories.length > 0">
           <li v-for="(category, index) in categories" v-bind:key="index">
-            {{ category }}
+            <span>
+              {{ category }}
+            </span>
+            <button class="button" @click="removeCategory(index)">
+              -
+            </button>
           </li>
         </ul>
         <input type="text" name="category" placeholder="Categories"
@@ -30,7 +35,12 @@
       <div>
         <ul v-if="tags.length > 0">
           <li v-for="(tag, index) in tags" v-bind:key="index">
-            #{{ tag }}
+            <span>
+              #{{ tag }}
+            </span>
+            <button class="button" @click="removeTag(index)">
+              -
+            </button>
           </li>
         </ul>
         <input type="text" name="tag" placeholder="Tags" v-model="currentTag"
@@ -71,10 +81,16 @@ export default {
       this.categories.push(category);
       this.currentCategory = '';
     },
+    removeCategory(index) {
+      this.categories.splice(index, 1);
+    },
     addTag() {
       const tag = this.currentTag.toLowerCase();
       this.tags.push(tag);
       this.currentTag = '';
+    },
+    removeTag(index) {
+      this.tags.splice(index, 1);
     },
     async addBookmark() {
       await BookmarksService.addBookmark({
