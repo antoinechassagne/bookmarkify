@@ -42,13 +42,22 @@ exports.create = (req, res) => {
 
 // Fetch all bookmarks
 exports.fetchAll = (req, res) => {
-    Bookmark.find((error, bookmarks) => {
-        if (error) console.error(error);
+    const limit = parseInt(req.body.limit);
+    const page = parseInt(req.body.page);
+    const skip = page <= 0 ? limit : (page - 1) * limit;
 
-        res.send({
-            success: true,
-            bookmarks: bookmarks
-        });
+    Bookmark.find({}, null, {limit: limit, skip: skip}, (error, bookmarks) => {
+        if (error) {
+            console.error(error);
+            res.send({
+                success: false,
+            });
+        } else {
+            res.send({
+                success: true,
+                bookmarks: bookmarks
+            });
+        }
     });
 };
 
@@ -108,7 +117,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     Bookmark.deleteOne({
         _id: req.params.id
-    }, (error, bookmark) => {
+    }, (error) => {
         if (error) console.error(error);
 
         res.send({
