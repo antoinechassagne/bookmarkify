@@ -4,9 +4,9 @@ const bookmarkController = require('../controllers/bookmark');
 
 // Routes
 
-router.post('/bookmarks/', bookmarkController.create);
+router.post('/bookmarks/add', bookmarkController.create);
 
-router.get('/bookmarks', bookmarkController.fetchAll);
+router.post('/bookmarks', bookmarkController.fetchAll);
 
 router.get('/bookmarks/:id', bookmarkController.fetchSingle);
 

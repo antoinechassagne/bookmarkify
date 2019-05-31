@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const bookmark = require('./routes/bookmark');
@@ -16,7 +16,7 @@ const databaseURI = config.databaseURI;
 mongoose.connect(databaseURI, {useNewUrlParser: true});
 const db = mongoose.connection;
 
-db.on("error", () => console.error.bind(console, "connection error"));
+db.on("error", () => console.error.bind(console, "Database connection error"));
 db.once("open", () => console.log("Database connection succeeded"));
 
 // App settings & launch ------------------------------------------------------

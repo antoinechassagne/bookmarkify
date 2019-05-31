@@ -1,8 +1,8 @@
 import Api from '@/services/Api';
 
 export default {
-  fetchBookmarks() {
-    return Api().get('bookmarks');
+  fetchBookmarks(params) {
+    return Api().post('bookmarks/', params);
   },
 
   fetchSingleBookmark(params) {
@@ -10,7 +10,7 @@ export default {
   },
 
   addBookmark(params) {
-    return Api().post('bookmarks', params);
+    return Api().post('bookmarks/add', params);
   },
 
   editBookmark(params) {

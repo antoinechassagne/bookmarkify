@@ -42,8 +42,8 @@ exports.create = (req, res) => {
 
 // Fetch all bookmarks
 exports.fetchAll = (req, res) => {
-    const limit = parseInt(req.body.limit);
     const page = parseInt(req.body.page);
+    const limit = parseInt(req.body.limit);
     const skip = page <= 0 ? limit : (page - 1) * limit;
 
     Bookmark.find({}, null, {limit: limit, skip: skip}, (error, bookmarks) => {
