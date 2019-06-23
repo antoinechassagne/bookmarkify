@@ -8,8 +8,8 @@
         Filter your bookmarks by categories
       </legend>
       <div v-for="(category, index) in allCategories" v-bind:key="index">
-        <input type="checkbox" name="category" v-bind:value="category"
-               v-bind:id="`category-${index}`" v-on:change="updateFilters(`category-${index}`)">
+        <input type="checkbox" name="category" v-bind:value="category" v-model="activeCategories"
+               v-bind:id="`category-${index}`">
         <label v-bind:for="`category-${index}`">
           {{ category }}
         </label>
@@ -20,13 +20,17 @@
         Filter your bookmarks by tags
       </legend>
       <div v-for="(tag, index) in allTags" v-bind:key="index">
-        <input type="checkbox" name="tag" v-bind:value="tag"
-               v-bind:id="`tag-${index}`" v-on:change="updateFilters(`tag-${index}`)">
+        <input type="checkbox" name="tag" v-bind:value="tag" v-model="activeTags"
+               v-bind:id="`tag-${index}`">
         <label v-bind:for="`tag-${index}`">
           {{ tag }}
         </label>
       </div>
     </fieldset>
+    <a href="#"
+       @click="updateFilters(activeCategories, activeTags)">
+      Apply
+    </a>
   </div>
 </template>
 
@@ -38,8 +42,8 @@ export default {
     return {
       allCategories: [],
       allTags: [],
-      activeTags: [],
       activeCategories: [],
+      activeTags: [],
     };
   },
   mounted() {
@@ -68,6 +72,9 @@ export default {
         // Remove duplicates
         this.allTags = [...new Set(this.allTags)];
       });
+    },
+    updateFilters(categories, tags) {
+      this.$emit('updateFilters', categories, tags);
     },
   },
 };

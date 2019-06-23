@@ -50,7 +50,18 @@ exports.fetchAll = (req, res) => {
     const limit = parseInt(req.body.limit);
     const skip = page <= 0 ? limit : (page - 1) * limit;
 
-    // Count
+    // Filters params
+    const filters = {};
+
+    if (req.body.categories.length > 0) {
+        filters.categories = {$elemMatch: {name: {$in: req.body.categories}}}
+    };
+
+    if (req.body.tags.length > 0) {
+        filters.tags = {$elemMatch: {name: {$in: req.body.tags}}}
+    };
+
+    // Total count
     Bookmark.countDocuments({}, (error, count) => {
         if (error) {
             resObj.count = 0;
@@ -59,8 +70,9 @@ exports.fetchAll = (req, res) => {
         }
     });
 
+    console.log(filters);
     // Query
-    Bookmark.find({}, null, {limit: limit, skip: skip}, (error, bookmarks) => {
+    Bookmark.find(filters, null, {limit: limit, skip: skip}, (error, bookmarks) => {
         if (error) {
             console.error(error);
             resObj.success = false;

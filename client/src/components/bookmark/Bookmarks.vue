@@ -5,7 +5,7 @@
       <h2>Check all your bookmarks</h2>
       <BookmarkFilters
         :bookmarks="bookmarks"
-        v-on:updateFilters="updateFilters(id)">
+        v-on:updateFilters="updateFilters">
       </BookmarkFilters>
       <div v-if="bookmarksTotalCount > 0">
         {{ bookmarks.length }} sur {{ bookmarksTotalCount }} results displayed
@@ -70,6 +70,8 @@ export default {
         lastPage: undefined,
         perPage: 2,
       },
+      activeCategories: [],
+      activeTags: [],
     };
   },
   async mounted() {
@@ -81,6 +83,8 @@ export default {
       const response = await BookmarksService.fetchBookmarks({
         page: this.currentPage,
         limit: this.pagination.perPage,
+        categories: this.activeCategories,
+        tags: this.activeTags,
       });
       this.bookmarks = response.data.bookmarks;
       this.bookmarksTotalCount = response.data.count;
@@ -96,9 +100,10 @@ export default {
       this.currentPage = page;
       this.getBookmarks();
     },
-    updateFilters(id) {
-      // eslint-disable-next-line
-      console.log(id);
+    updateFilters(categories, tags) {
+      this.activeCategories = categories;
+      this.activeTags = tags;
+      this.getBookmarks();
     },
     getNumberOfPages() {
       const numberOfPages = Math.ceil(this.bookmarksTotalCount / this.pagination.perPage);
