@@ -4,7 +4,6 @@
     <div v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmark-list">
       <h2>Check all your bookmarks</h2>
       <BookmarkFilters
-        :bookmarks="bookmarks"
         v-on:updateFilters="updateFilters">
       </BookmarkFilters>
       <div v-if="bookmarksTotalCount > 0">

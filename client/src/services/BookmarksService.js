@@ -5,6 +5,10 @@ export default {
     return Api().post('bookmarks/', params);
   },
 
+  fetchFilters() {
+    return Api().get('bookmarks/');
+  },
+
   fetchSingleBookmark(params) {
     return Api().get(`bookmarks/${params.id}`, params);
   },

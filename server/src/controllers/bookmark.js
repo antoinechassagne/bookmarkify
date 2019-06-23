@@ -62,15 +62,8 @@ exports.fetchAll = (req, res) => {
     };
 
     // Total count
-    Bookmark.countDocuments({}, (error, count) => {
-        if (error) {
-            resObj.count = 0;
-        } else {
-            resObj.count = count;
-        }
-    });
+    const totalCount = countTotalBookmarks();
 
-    console.log(filters);
     // Query
     Bookmark.find(filters, null, {limit: limit, skip: skip}, (error, bookmarks) => {
         if (error) {
@@ -78,6 +71,7 @@ exports.fetchAll = (req, res) => {
             resObj.success = false;
         } else {
             resObj.success = true;
+            resObj.count = totalCount;
             resObj.bookmarks = bookmarks;
             resObj.currentPage = page;
         }
@@ -151,3 +145,54 @@ exports.delete = (req, res) => {
         });
     });
 };
+
+// Get bookmarks total count
+exports.fetchFilters = (req, res) => {
+    Bookmark.find({}, null, (error, bookmarks) => {
+        if (error) {
+            res.send({
+                success: false
+            });
+        } else {
+            let categories = [];
+            let tags = [];
+
+            bookmarks.forEach((bookmark) => {
+                if (bookmark.categories !== undefined) {
+                    bookmark.categories.forEach((category) => {
+                        categories.push(category.name);
+                    });
+                }
+                // Remove duplicates
+                categories = [...new Set(categories)];
+            });
+
+            bookmarks.forEach((bookmark) => {
+                if (bookmark.tags !== undefined) {
+                    bookmark.tags.forEach((tag) => {
+                        tags.push(tag.name);
+                    });
+                }
+                // Remove duplicates
+                tags = [...new Set(tags)];
+            });
+
+            res.send({
+                success: true,
+                categories,
+                tags
+            });
+        }
+    });
+};
+
+// Get bookmarks total count
+function countTotalBookmarks() {
+    Bookmark.countDocuments({}, (error, count) => {
+        if (error) {
+            return 0;
+        } else {
+            return count;
+        }
+    });
+}

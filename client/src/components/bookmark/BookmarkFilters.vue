@@ -35,9 +35,10 @@
 </template>
 
 <script>
+import BookmarksService from '@/services/BookmarksService';
+
 export default {
   name: 'BookmarkFilters',
-  props: ['bookmarks'],
   data() {
     return {
       allCategories: [],
@@ -46,32 +47,14 @@ export default {
       activeTags: [],
     };
   },
-  mounted() {
-    this.getCategories();
-    this.getTags();
+  async mounted() {
+    await this.getFilters();
   },
   methods: {
-    getCategories() {
-      this.bookmarks.forEach((bookmark) => {
-        if (bookmark.categories !== undefined) {
-          bookmark.categories.forEach((category) => {
-            this.allCategories.push(category.name);
-          });
-        }
-        // Remove duplicates
-        this.allCategories = [...new Set(this.allCategories)];
-      });
-    },
-    getTags() {
-      this.bookmarks.forEach((bookmark) => {
-        if (bookmark.tags !== undefined) {
-          bookmark.tags.forEach((tag) => {
-            this.allTags.push(tag.name);
-          });
-        }
-        // Remove duplicates
-        this.allTags = [...new Set(this.allTags)];
-      });
+    async getFilters() {
+      const response = await BookmarksService.fetchFilters();
+      this.allCategories = response.data.categories;
+      this.allTags = response.data.tags;
     },
     updateFilters(categories, tags) {
       this.$emit('updateFilters', categories, tags);

@@ -8,6 +8,8 @@ router.post('/bookmarks/add', bookmarkController.create);
 
 router.post('/bookmarks', bookmarkController.fetchAll);
 
+router.get('/bookmarks/', bookmarkController.fetchFilters);
+
 router.get('/bookmarks/:id', bookmarkController.fetchSingle);
 
 router.put('/bookmarks/:id', bookmarkController.update);
