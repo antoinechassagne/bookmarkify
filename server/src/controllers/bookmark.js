@@ -42,22 +42,35 @@ exports.create = (req, res) => {
 
 // Fetch all bookmarks
 exports.fetchAll = (req, res) => {
+    // Init the res object to be send as return
+    let resObj = {};
+
+    // Pagination params
     const page = parseInt(req.body.page);
     const limit = parseInt(req.body.limit);
     const skip = page <= 0 ? limit : (page - 1) * limit;
 
+    // Count
+    Bookmark.countDocuments({}, (error, count) => {
+        if (error) {
+            resObj.count = 0;
+        } else {
+            resObj.count = count;
+        }
+    });
+
+    // Query
     Bookmark.find({}, null, {limit: limit, skip: skip}, (error, bookmarks) => {
         if (error) {
             console.error(error);
-            res.send({
-                success: false,
-            });
+            resObj.success = false;
         } else {
-            res.send({
-                success: true,
-                bookmarks: bookmarks
-            });
+            resObj.success = true;
+            resObj.bookmarks = bookmarks;
+            resObj.currentPage = page;
         }
+
+        res.send(resObj);
     });
 };
 

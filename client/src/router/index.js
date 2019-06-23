@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/Home';
-import Bookmarks from '@/components/Bookmarks';
-import AddBookmark from '@/components/AddBookmark';
-import EditBookmark from '@/components/EditBookmark';
+import Home from '@/components/home/Home';
+import Bookmarks from '@/components/bookmark/Bookmarks';
+import AddBookmark from '@/components/bookmark/AddBookmark';
+import EditBookmark from '@/components/bookmark/EditBookmark';
 
 Vue.use(Router);
 
