@@ -31,6 +31,10 @@
        @click="updateFilters(activeCategories, activeTags)">
       Apply
     </a>
+    <a href="#"
+       @click="resetFilters()">
+      Reset
+    </a>
   </div>
 </template>
 
@@ -58,6 +62,11 @@ export default {
     },
     updateFilters(categories, tags) {
       this.$emit('updateFilters', categories, tags);
+    },
+    resetFilters() {
+      this.activeCategories = [];
+      this.activeTags = [];
+      this.updateFilters(this.activeCategories, this.activeTags);
     },
   },
 };

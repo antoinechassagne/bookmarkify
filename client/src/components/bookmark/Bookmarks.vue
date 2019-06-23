@@ -1,11 +1,10 @@
 <template>
   <div class="bookmark-page">
     <h1>Bookmarks</h1>
+    <BookmarkFilters
+      v-on:updateFilters="updateFilters">
+    </BookmarkFilters>
     <div v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmark-list">
-      <h2>Check all your bookmarks</h2>
-      <BookmarkFilters
-        v-on:updateFilters="updateFilters">
-      </BookmarkFilters>
       <div v-if="bookmarksTotalCount > 0">
         {{ bookmarks.length }} sur {{ bookmarksTotalCount }} results displayed
       </div>
@@ -103,6 +102,7 @@ export default {
     async updateFilters(categories, tags) {
       this.activeCategories = categories;
       this.activeTags = tags;
+      this.currentPage = 1;
       await this.getBookmarks();
       this.getNumberOfPages();
     },
