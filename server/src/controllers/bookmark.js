@@ -41,7 +41,7 @@ exports.create = (req, res) => {
 };
 
 // Fetch all bookmarks
-exports.fetchAll = (req, res) => {
+exports.fetchAll = async (req, res) => {
     // Init the res object to be send as return
     let resObj = {};
 
@@ -61,8 +61,7 @@ exports.fetchAll = (req, res) => {
         filters.tags = {$elemMatch: {name: {$in: req.body.tags}}}
     };
 
-    // Total count
-    const totalCount = countTotalBookmarks();
+    let count = await countTotalBookmarks(filters);
 
     // Query
     Bookmark.find(filters, null, {limit: limit, skip: skip}, (error, bookmarks) => {
@@ -71,11 +70,10 @@ exports.fetchAll = (req, res) => {
             resObj.success = false;
         } else {
             resObj.success = true;
-            resObj.count = totalCount;
+            resObj.count = count;
             resObj.bookmarks = bookmarks;
             resObj.currentPage = page;
         }
-
         res.send(resObj);
     });
 };
@@ -187,12 +185,13 @@ exports.fetchFilters = (req, res) => {
 };
 
 // Get bookmarks total count
-function countTotalBookmarks() {
-    Bookmark.countDocuments({}, (error, count) => {
+async function countTotalBookmarks(filters) {
+    let count = await Bookmark.countDocuments(filters, (error, count) => {
         if (error) {
-            return 0;
+            console.log(error);
         } else {
             return count;
         }
     });
+    return count;
 }

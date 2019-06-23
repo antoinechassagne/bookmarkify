@@ -63,7 +63,7 @@ export default {
   data() {
     return {
       bookmarks: undefined,
-      bookmarksTotalCount: undefined,
+      bookmarksTotalCount: 1,
       pagination: {
         currentPage: 1,
         lastPage: undefined,
@@ -75,7 +75,7 @@ export default {
   },
   async mounted() {
     await this.getBookmarks();
-    await this.getNumberOfPages();
+    this.getNumberOfPages();
   },
   methods: {
     async getBookmarks() {
@@ -85,6 +85,7 @@ export default {
         categories: this.activeCategories,
         tags: this.activeTags,
       });
+
       this.bookmarks = response.data.bookmarks;
       this.bookmarksTotalCount = response.data.count;
     },
@@ -99,10 +100,11 @@ export default {
       this.currentPage = page;
       this.getBookmarks();
     },
-    updateFilters(categories, tags) {
+    async updateFilters(categories, tags) {
       this.activeCategories = categories;
       this.activeTags = tags;
-      this.getBookmarks();
+      await this.getBookmarks();
+      this.getNumberOfPages();
     },
     getNumberOfPages() {
       const numberOfPages = Math.ceil(this.bookmarksTotalCount / this.pagination.perPage);
