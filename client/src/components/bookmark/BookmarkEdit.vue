@@ -58,7 +58,7 @@
 import BookmarksService from '@/services/BookmarksService';
 
 export default {
-  name: 'EditBookmark',
+  name: 'BookmarkEdit',
   data() {
     return {
       url: '',
@@ -119,7 +119,7 @@ export default {
         tags: this.tags.length > 0 ? this.tags : undefined,
       });
 
-      this.$router.push({ name: 'Bookmarks' });
+      this.$router.push({ name: 'BookmarkListing' });
     },
   },
 };

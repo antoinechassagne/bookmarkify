@@ -1,18 +1,19 @@
-<template v-if="pagination">
-  <nav>
+<template>
+  <nav v-if="pagination.lastPage > 1">
     <ul>
-      <li>
-        <a href="#" @click="changePage(pagination.currentPage)">
+      <li  v-if="pagination.currentPage > 1">
+        <a href="#" @click="changePage(pagination.currentPage - 1)">
           &laquo;
         </a>
       </li>
       <li v-for="page in pagination.lastPage"
           :key="page">
-        <a href="#" @click.prevent="changePage(page)">
+        <a href="#" @click.prevent="changePage(page)"
+           v-bind:class="{'font-bold' : page === pagination.currentPage}">
             {{ page }}
         </a>
       </li>
-      <li>
+      <li v-if="pagination.currentPage !== pagination.lastPage">
         <a href="#"
            @click="changePage(pagination.currentPage + 1)">
             &raquo;

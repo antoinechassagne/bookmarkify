@@ -1,10 +1,7 @@
 <template v-if="bookmarks">
-  <div class="filters">
-    <h4>
-      Filter your bookmarks by categories
-    </h4>
+  <aside class="filters">
     <fieldset v-if="allCategories.length > 0">
-      <legend>
+      <legend class="font-bold">
         Filter your bookmarks by categories
       </legend>
       <div v-for="(category, index) in allCategories" v-bind:key="index">
@@ -16,7 +13,7 @@
       </div>
     </fieldset>
     <fieldset v-if="allTags.length > 0">
-      <legend>
+      <legend class="font-bold">
         Filter your bookmarks by tags
       </legend>
       <div v-for="(tag, index) in allTags" v-bind:key="index">
@@ -35,7 +32,7 @@
        @click="resetFilters()">
       Reset
     </a>
-  </div>
+  </aside>
 </template>
 
 <script>
@@ -71,3 +68,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .filters {
+    width: 25%;
+  }
+</style>

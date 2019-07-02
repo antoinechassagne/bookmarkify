@@ -62,7 +62,7 @@
 import BookmarksService from '@/services/BookmarksService';
 
 export default {
-  name: 'AddBookmark',
+  name: 'BookmarkAdd',
   data() {
     return {
       title: '',
@@ -100,7 +100,7 @@ export default {
         categories: this.categories.length > 0 ? this.categories : undefined,
         tags: this.tags.length > 0 ? this.tags : undefined,
       });
-      this.$router.push({ name: 'Bookmarks' });
+      this.$router.push({ name: 'BookmarkListing' });
     },
   },
 };

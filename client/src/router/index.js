@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/home/Home';
-import Bookmarks from '@/components/bookmark/Bookmarks';
-import AddBookmark from '@/components/bookmark/AddBookmark';
-import EditBookmark from '@/components/bookmark/EditBookmark';
+import Welcome from '@/components/Welcome';
+import BookmarkAdd from '@/components/bookmark/BookmarkAdd';
+import BookmarkEdit from '@/components/bookmark/BookmarkEdit';
+import BookmarkListing from '@/components/bookmark/BookmarkListing';
 
 Vue.use(Router);
 
@@ -12,23 +12,23 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: 'Welcome',
+      component: Welcome,
     },
     {
       path: '/bookmarks',
-      name: 'Bookmarks',
-      component: Bookmarks,
+      name: 'BookmarkListing',
+      component: BookmarkListing,
     },
     {
       path: '/bookmarks/add',
-      name: 'AddBookmark',
-      component: AddBookmark,
+      name: 'BookmarkAdd',
+      component: BookmarkAdd,
     },
     {
       path: '/bookmarks/edit/:id',
-      name: 'EditBookmark',
-      component: EditBookmark,
+      name: 'BookmarkEdit',
+      component: BookmarkEdit,
     },
   ],
 });
