@@ -12,30 +12,8 @@
         <div v-if="bookmarksTotalCount > 0" class="italic mb-5 text-gray-500">
           {{ bookmarksTotalCount }} bookmarks found
         </div>
-        <div v-for="(bookmark, index) in bookmarks" v-bind:key="index" class="bookmark">
-          <h3>{{ bookmark.title }}</h3>
-          <div v-if="bookmark.categories.length > 0">
-            <span>Categories</span>
-            <ul>
-              <li v-for="(category, index) in bookmark.categories" v-bind:key="index">
-                {{ category.name }}
-              </li>
-            </ul>
-          </div>
-          <div v-if="bookmark.tags.length > 0">
-            <span>Tags</span>
-            <ul>
-              <li v-for="(tag, index) in bookmark.tags" v-bind:key="index">
-                #{{ tag.name }}
-              </li>
-            </ul>
-          </div>
-          <p>{{ bookmark.description }}</p>
-          <a v-bind:href="'//' + bookmark.url">{{ bookmark.url }}</a>
-          <router-link v-bind:to="{ name: 'BookmarkEdit', params: { id: bookmark._id } }">
-            Edit
-          </router-link>
-          <a href="#" @click="deleteBookmark(bookmark._id)">Delete</a>
+        <div v-for="(bookmark, index) in bookmarks" v-bind:key="index" class="">
+          <BookmarkCard :bookmark="bookmark"></BookmarkCard>
         </div>
         <pagination
           :pagination="pagination"
@@ -49,7 +27,7 @@
           Add a bookmark
         </router-link>
       </div>
-      <div v-else class="bookmark-list">
+      <div v-else class="bookmark-list italic">
         <h2>Loading...</h2>
       </div>
     </div>
@@ -59,6 +37,7 @@
 <script>
 import BookmarksService from '@/services/BookmarksService';
 import BookmarkFilters from '@/components/bookmark/BookmarkFilters';
+import BookmarkCard from '@/components/bookmark/BookmarkCard';
 import Pagination from '@/components/common/Pagination';
 
 export default {
@@ -66,6 +45,7 @@ export default {
   components: {
     Pagination,
     BookmarkFilters,
+    BookmarkCard,
   },
   data() {
     return {
