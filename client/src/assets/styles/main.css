@@ -9,5 +9,7 @@
   .button:hover {
     background-color: white;
     color: black; }
+  .button--small {
+    padding: 5px 10px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,34 +1,34 @@
 <template v-if="bookmarks">
   <aside class="filters">
-    <fieldset v-if="allCategories.length > 0">
-      <legend class="font-bold">
-        Filter your bookmarks by categories
+    <fieldset v-if="allCategories.length > 0" class="mb-5">
+      <legend class="font-bold mb-2">
+        Categories
       </legend>
       <div v-for="(category, index) in allCategories" v-bind:key="index">
         <input type="checkbox" name="category" v-bind:value="category" v-model="activeCategories"
                v-bind:id="`category-${index}`">
-        <label v-bind:for="`category-${index}`">
+        <label v-bind:for="`category-${index}`" class="ml-2">
           {{ category }}
         </label>
       </div>
     </fieldset>
-    <fieldset v-if="allTags.length > 0">
-      <legend class="font-bold">
-        Filter your bookmarks by tags
+    <fieldset v-if="allTags.length > 0" class="mb-5">
+      <legend class="font-bold mb-2">
+        Tags
       </legend>
       <div v-for="(tag, index) in allTags" v-bind:key="index">
         <input type="checkbox" name="tag" v-bind:value="tag" v-model="activeTags"
                v-bind:id="`tag-${index}`">
-        <label v-bind:for="`tag-${index}`">
+        <label v-bind:for="`tag-${index}`" class="ml-2">
           {{ tag }}
         </label>
       </div>
     </fieldset>
-    <a href="#"
+    <a href="#" class="button button--small"
        @click="updateFilters(activeCategories, activeTags)">
       Apply
     </a>
-    <a href="#"
+    <a href="#" class="button button--small"
        @click="resetFilters()">
       Reset
     </a>

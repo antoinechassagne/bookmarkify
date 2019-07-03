@@ -1,13 +1,16 @@
 <template>
   <div class="bookmark-page">
-    <h1 class="text-3xl mb-10">My bookmarks</h1>
+    <div class="flex items-center justify-between">
+      <h1 class="text-3xl mt-10 mb-10">My bookmarks</h1>
+      <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">Add a bookmark</router-link>
+    </div>
     <div class="flex">
       <BookmarkFilters
         v-on:updateFilters="updateFilters">
       </BookmarkFilters>
       <div v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmark-list">
-        <div v-if="bookmarksTotalCount > 0">
-          {{ bookmarksTotalCount }} results found
+        <div v-if="bookmarksTotalCount > 0" class="italic mb-5 text-gray-500">
+          {{ bookmarksTotalCount }} bookmarks found
         </div>
         <div v-for="(bookmark, index) in bookmarks" v-bind:key="index" class="bookmark">
           <h3>{{ bookmark.title }}</h3>
@@ -34,15 +37,17 @@
           </router-link>
           <a href="#" @click="deleteBookmark(bookmark._id)">Delete</a>
         </div>
-        <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">Add Post</router-link>
         <pagination
           :pagination="pagination"
-          v-on:changePage="changePage">
+          v-on:changePage="changePage"
+          class="mt-10">
         </pagination>
       </div>
       <div v-else-if="bookmarks !== undefined && bookmarks.length <= 0" class="bookmark-list">
-        <h2>There are no bookmarks yet...</h2>
-        <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">Add Post</router-link>
+        <h2 class="italic">There are no bookmarks yet...</h2>
+        <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button button--small mt-5">
+          Add a bookmark
+        </router-link>
       </div>
       <div v-else class="bookmark-list">
         <h2>Loading...</h2>
@@ -116,3 +121,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.bookmark-list {
+  width: 75%;
+}
+</style>
