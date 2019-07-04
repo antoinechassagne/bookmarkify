@@ -12,7 +12,7 @@
         </label>
       </div>
     </fieldset>
-    <fieldset v-if="allTags.length > 0" class="mb-5">
+    <fieldset v-if="allTags.length > 0" class="mb-10">
       <legend class="font-bold mb-2">
         Tags
       </legend>

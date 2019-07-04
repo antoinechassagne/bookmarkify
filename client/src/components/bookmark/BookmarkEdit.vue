@@ -1,55 +1,88 @@
 <template>
   <div class="edit-bookmark-page">
-    <h1>
-      Edit a bookmark
-    </h1>
+    <div class="flex items-center justify-between">
+      <h1 class="text-3xl mt-10 mb-10">
+        Edit a bookmark
+      </h1>
+      <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">
+        Add a bookmark
+      </router-link>
+    </div>
     <div class="form">
-      <div>
-        <input type="text" name="url" placeholder="URL" v-model="url">
+      <div class="mb-5">
+        <label for="url" class="font-bold block mb-2">
+          URL
+        </label>
+        <input type="text" name="url" placeholder="Enter an URL" v-model="url" id="url"
+               class="input">
       </div>
-      <div>
-        <input type="text" name="title" placeholder="Title" v-model="title">
+      <div class="mb-5">
+        <label for="title" class="font-bold block mb-2">
+          Title
+        </label>
+        <input type="text" name="title" placeholder="Enter a title" v-model="title" id="title"
+               class="input">
       </div>
-      <div>
-        <textarea rows="15" cols="15" placeholder="Description" v-model="description"></textarea>
+      <div class="mb-5">
+        <label for="description" class="font-bold block mb-2">
+          Description
+        </label>
+        <textarea rows="5" placeholder="Enter a description" v-model="description"
+                  id="description" class="input">
+        </textarea>
       </div>
-      <div v-if="categories.length > 0">
-        <span>Categories</span>
-        <ul>
-          <li v-for="(category, index) in categories" v-bind:key="index">
-            <span>{{ category }}</span>
-            <button class="button" @click="removeCategory(index)">
-              -
+      <div class="flex">
+        <div class="mb-5 mr-20">
+        <span class="font-bold block mb-2">
+          Categories
+        </span>
+          <ul v-if="categories.length > 0">
+            <li v-for="(category, index) in categories" v-bind:key="index"
+                class="mb-3">
+              <span class="mr-3">
+                {{ category }}
+              </span>
+              <button class="button button--round" @click="removeCategory(index)">
+                -
+              </button>
+            </li>
+          </ul>
+          <div class="flex items-center">
+            <input type="text" name="category" placeholder="Add a new category"
+                   v-model="currentCategory" v-on:keyup.enter="addCategory"
+                   class="input input--small mr-3">
+            <button class="button button--round" @click="addCategory">
+              +
             </button>
-          </li>
-        </ul>
-        <input type="text" name="category" placeholder="Categories"
-               v-model="currentCategory" v-on:keyup.enter="addCategory">
-        <button class="button" @click="addCategory">
-          +
-        </button>
-      </div>
-      <div v-if="tags.length > 0">
-        <span>Tags</span>
-        <ul>
-          <li v-for="(tag, index) in tags" v-bind:key="index">
-            <span>#{{ tag }}</span>
-            <button class="button" @click="removeTag(index)">
-              -
+          </div>
+        </div>
+        <div class="mb-5">
+        <span class="font-bold block mb-2">
+          Tags
+        </span>
+          <ul v-if="tags.length > 0">
+            <li v-for="(tag, index) in tags" v-bind:key="index"
+                class="mb-3">
+              <span class="mr-3">
+                #{{ tag }}
+              </span>
+              <button class="button button--round" @click="removeTag(index)">
+                -
+              </button>
+            </li>
+          </ul>
+          <div class="flex items-center">
+            <input type="text" name="tag" placeholder="Add a new tag" v-model="currentTag"
+                   v-on:keyup.enter="addTag" class="input input--small mr-3">
+            <button class="button button--round" @click="addTag">
+              +
             </button>
-          </li>
-        </ul>
-        <input type="text" name="tag" placeholder="Tags" v-model="currentTag"
-               v-on:keyup.enter="addTag">
-        <button class="button" @click="addTag">
-          +
-        </button>
+          </div>
+        </div>
       </div>
-      <div>
-        <button class="button" @click="editBookmark">
-          Edit
-        </button>
-      </div>
+      <button class="button button--small" @click="editBookmark">
+        Apply changes
+      </button>
     </div>
   </div>
 </template>

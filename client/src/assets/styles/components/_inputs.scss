@@ -1,0 +1,16 @@
+input, textarea {
+  max-width: 50vw;
+}
+
+.input {
+  width: 100%;
+  color: black;
+  padding: 10px 20px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+
+  &--small {
+    width: auto;
+    padding: 5px 10px;
+  }
+}

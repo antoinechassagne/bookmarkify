@@ -1,34 +1,39 @@
 <template>
   <div class="bookmark-page">
     <div class="flex items-center justify-between">
-      <h1 class="text-3xl mt-10 mb-10">My bookmarks</h1>
-      <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">Add a bookmark</router-link>
+      <h1 class="text-3xl mt-10 mb-10">
+        My bookmarks
+      </h1>
+      <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">
+        Add a bookmark
+      </router-link>
     </div>
     <div class="flex">
       <BookmarkFilters
         v-on:updateFilters="updateFilters">
       </BookmarkFilters>
-      <div v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmark-list">
+      <main v-if="bookmarks !== undefined && bookmarks.length > 0" class="wrapper">
         <div v-if="bookmarksTotalCount > 0" class="italic mb-5 text-gray-500">
           {{ bookmarksTotalCount }} bookmarks found
         </div>
-        <div v-for="(bookmark, index) in bookmarks" v-bind:key="index" class="">
-          <BookmarkCard :bookmark="bookmark"></BookmarkCard>
-        </div>
-        <pagination
-          :pagination="pagination"
-          v-on:changePage="changePage"
-          class="mt-10">
+        <BookmarkCard v-for="(bookmark, index) in bookmarks" v-bind:key="index"
+                      :bookmark="bookmark">
+        </BookmarkCard>
+        <pagination :pagination="pagination" v-on:changePage="changePage" class="mt-10">
         </pagination>
-      </div>
+      </main>
       <div v-else-if="bookmarks !== undefined && bookmarks.length <= 0" class="bookmark-list">
-        <h2 class="italic">There are no bookmarks yet...</h2>
+        <h2 class="italic">
+          There are no bookmarks yet...
+        </h2>
         <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button button--small mt-5">
           Add a bookmark
         </router-link>
       </div>
       <div v-else class="bookmark-list italic">
-        <h2>Loading...</h2>
+        <h2>
+          Loading...
+        </h2>
       </div>
     </div>
   </div>
@@ -103,7 +108,7 @@ export default {
 </script>
 
 <style lang="scss">
-.bookmark-list {
-  width: 75%;
+.wrapper {
+  width: 50%;
 }
 </style>
