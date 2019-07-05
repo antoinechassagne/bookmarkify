@@ -83,6 +83,9 @@
       <button class="button button--small" @click="editBookmark">
         Apply changes
       </button>
+      <button class="button button--small button--danger" @click="deleteBookmark(bookmark._id)">
+        Delete
+      </button>
     </div>
   </div>
 </template>
@@ -157,3 +160,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .form {
+    margin-left: 25%;
+    width: 50%;
+  }
+</style>

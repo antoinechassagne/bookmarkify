@@ -59,7 +59,7 @@ export default {
       pagination: {
         currentPage: 1,
         lastPage: undefined,
-        perPage: 2,
+        perPage: 5,
       },
       activeCategories: [],
       activeTags: [],

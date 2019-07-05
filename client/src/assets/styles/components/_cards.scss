@@ -1,0 +1,40 @@
+.card {
+  position: relative;
+  border: solid 1px lightgrey;
+  border-radius: 10px;
+  padding: 20px;
+
+  &__category {
+    padding: 0 0 0 5px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:after {
+      content: '-';
+      padding-left: 5px;
+    }
+
+    &:last-child {
+      &:after {
+        content: '';
+        padding-left: 0;
+      }
+    }
+  }
+
+  &__tags {
+    margin-top: 10px;
+  }
+
+  &__edit {
+    position: absolute;
+    right: 20px;
+    top: 0;
+  }
+
+  &__button {
+    margin-top: 20px;
+  }
+}
