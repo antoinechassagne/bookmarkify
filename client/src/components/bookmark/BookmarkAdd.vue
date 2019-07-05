@@ -100,18 +100,22 @@ export default {
   },
   methods: {
     addCategory() {
-      const category = this.currentCategory.charAt(0).toUpperCase() +
-        this.currentCategory.slice(1).toLowerCase();
-      this.categories.push(category);
-      this.currentCategory = '';
+      if (this.currentCategory !== '') {
+        const category = this.currentCategory.charAt(0).toUpperCase() +
+          this.currentCategory.slice(1).toLowerCase();
+        this.categories.push(category);
+        this.currentCategory = '';
+      }
     },
     removeCategory(index) {
       this.categories.splice(index, 1);
     },
     addTag() {
-      const tag = this.currentTag.toLowerCase();
-      this.tags.push(tag);
-      this.currentTag = '';
+      if (this.currentTag !== '') {
+        const tag = this.currentTag.toLowerCase();
+        this.tags.push(tag);
+        this.currentTag = '';
+      }
     },
     removeTag(index) {
       this.tags.splice(index, 1);

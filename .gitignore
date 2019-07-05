@@ -22,6 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 client/src/assets/styles/.sass-cache/
+client/src/assets/styles/*.css
+client/src/assets/styles/*.map
 
 # -----------------------------------------------------------------------------
 # SERVER
