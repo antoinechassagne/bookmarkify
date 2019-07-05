@@ -5,9 +5,11 @@
         Categories
       </legend>
       <div v-for="(category, index) in allCategories" v-bind:key="index">
-        <input type="checkbox" name="category" v-bind:value="category" v-model="activeCategories"
-               v-bind:id="`category-${index}`">
-        <label v-bind:for="`category-${index}`" class="ml-2">
+        <input type="checkbox" name="category" id="`category-${index}`"
+               v-bind:value="category"
+               v-model="activeCategories"
+               @change="updateFilters(activeCategories, activeTags)">
+        <label for="`category-${index}`" class="ml-2">
           {{ category }}
         </label>
       </div>
@@ -17,17 +19,14 @@
         Tags
       </legend>
       <div v-for="(tag, index) in allTags" v-bind:key="index">
-        <input type="checkbox" name="tag" v-bind:value="tag" v-model="activeTags"
-               v-bind:id="`tag-${index}`">
-        <label v-bind:for="`tag-${index}`" class="ml-2">
+        <input type="checkbox" name="tag" id="`tag-${index}`"
+               v-bind:value="tag" v-model="activeTags"
+               @change="updateFilters(activeCategories, activeTags)">
+        <label for="`tag-${index}`" class="ml-2">
           {{ tag }}
         </label>
       </div>
     </fieldset>
-    <a href="#" class="button button--small"
-       @click="updateFilters(activeCategories, activeTags)">
-      Apply
-    </a>
     <a href="#" class="button button--small"
        @click="resetFilters()">
       Reset

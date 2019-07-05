@@ -95,7 +95,7 @@ export default {
     async updateFilters(categories, tags) {
       this.activeCategories = categories;
       this.activeTags = tags;
-      this.currentPage = 1;
+      this.pagination.currentPage = 1;
       await this.getBookmarks();
       this.getNumberOfPages();
     },
