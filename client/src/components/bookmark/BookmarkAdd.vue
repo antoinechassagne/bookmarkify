@@ -33,7 +33,7 @@
         </span>
           <ul v-if="categories.length > 0">
             <li v-for="(category, index) in categories" v-bind:key="index"
-                class="mb-3">
+                class="mb-3 flex justify-between">
               <span class="mr-3">
                 {{ category }}
               </span>
@@ -57,7 +57,7 @@
         </span>
           <ul v-if="tags.length > 0">
             <li v-for="(tag, index) in tags" v-bind:key="index"
-                class="mb-3">
+                class="mb-3 flex justify-between">
               <span class="mr-3">
                 #{{ tag }}
               </span>
