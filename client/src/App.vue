@@ -20,3 +20,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1;
+  }
+</style>

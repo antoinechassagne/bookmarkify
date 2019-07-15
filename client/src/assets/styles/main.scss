@@ -1,9 +1,9 @@
+// Helpers
+@import "helpers/reset";
+@import "helpers/spacing";
+
 // Components
 @import "components/buttons";
 @import "components/inputs";
 @import "components/cards";
-@import "components/base";
-@import "components/utilities";
-
-// Layout
-@import "layout/base";
+@import "components/headings";

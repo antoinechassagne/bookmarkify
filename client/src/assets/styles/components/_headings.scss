@@ -1,0 +1,7 @@
+.title-big {
+  font-size: 4rem;
+  
+  @media (max-width: 767px) {
+    font-size: 3rem;
+  }
+}

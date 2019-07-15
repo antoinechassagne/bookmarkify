@@ -1,25 +1,29 @@
 <template>
-  <div id="vueHome" class="text-center">
-    <h1 class="mt-20 mb-5 text-6xl">
-      {{ title }}
+  <main class="welcome-page">
+    <h1 class="title-big">
+      Welcome to Bookmarkify
     </h1>
-    <p>
-      {{ description }}
+    <p class="mt-30">
+      Save useful bookmarks you want to keep !
     </p>
-    <router-link v-bind:to="{ name: 'BookmarkListing' }" class="button mt-10 shadow-2xl">
+    <router-link v-bind:to="{ name: 'BookmarkListing' }" class="button mt-60">
       Let's start now !
     </router-link>
-  </div>
+  </main>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {
-      title: 'Welcome to Bookmarkify',
-      description: 'Save useful bookmarks you want to keep !',
-    };
-  },
 };
 </script>
+
+<style lang="scss">
+  .welcome-page {
+    height: 100vh;
+    text-align: center;
+    h1 {
+      padding-top: 30vh;
+    }
+  }
+</style>

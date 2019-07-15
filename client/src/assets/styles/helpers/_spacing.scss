@@ -1,0 +1,18 @@
+/**
+ * Generate margin and padding classes for each side
+ * and registered space numbers.
+ */
+$spaceNumbers: (5, 10, 20, 30, 60, 80);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceNumbers {
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
