@@ -1,23 +1,34 @@
 <template>
   <nav v-if="pagination.lastPage > 1">
-    <ul class="flex justify-center">
-      <li v-if="pagination.currentPage > 1" class="pl-2 pr-2">
-        <a href="#" @click="changePage(pagination.currentPage - 1)">
-          &laquo;
+    <ul class="pagination">
+      <li v-if="pagination.currentPage > 1">
+        <a @click="changePage(pagination.currentPage - 1)"
+           class="pagination__previous">
+          Previous
+        </a>
+      </li>
+      <li v-else>
+        <a class="pagination__previous pagination__previous--disable">
+          Previous
         </a>
       </li>
       <li v-for="page in pagination.lastPage"
           :key="page" class="pl-2 pr-2">
-        <a href="#" @click.prevent="changePage(page)"
-           v-bind:class="{'font-bold' : page === pagination.currentPage}">
+        <a @click.prevent="changePage(page)"
+           v-bind:class="{'pagination__number--active' : page === pagination.currentPage}"
+           class="pagination__number">
             {{ page }}
         </a>
       </li>
-      <li v-if="pagination.currentPage !== pagination.lastPage"
-          class="pl-2 pr-2">
-        <a href="#"
-           @click="changePage(pagination.currentPage + 1)">
-            &raquo;
+      <li v-if="pagination.currentPage !== pagination.lastPage">
+        <a @click="changePage(pagination.currentPage + 1)"
+           class="pagination__next">
+            Next
+        </a>
+      </li>
+      <li v-else>
+        <a class="pagination__next pagination__next--disable">
+          Next
         </a>
       </li>
     </ul>
