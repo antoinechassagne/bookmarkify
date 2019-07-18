@@ -1,19 +1,19 @@
 <template>
-  <div class="bookmark-page">
-    <div class="flex items-center justify-between">
-      <h1 class="text-3xl mt-10 mb-10">
+  <div class="bookmarks-page">
+    <div class="subheader mb-30">
+      <h1 class="title-medium">
         My bookmarks
       </h1>
       <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">
         Add a bookmark
       </router-link>
     </div>
-    <div class="flex">
+    <div class="wrapper">
       <BookmarkFilters
         v-on:updateFilters="updateFilters">
       </BookmarkFilters>
-      <main v-if="bookmarks !== undefined && bookmarks.length > 0" class="wrapper">
-        <div v-if="bookmarksTotalCount > 0" class="italic mb-5 text-gray-500">
+      <main v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmarks-list">
+        <div v-if="bookmarksTotalCount > 0" class="bookmarks-list__count mb-30">
           {{ bookmarksTotalCount }} bookmarks found
         </div>
         <BookmarkCard v-for="(bookmark, index) in bookmarks" v-bind:key="index"
@@ -22,19 +22,19 @@
         <pagination :pagination="pagination" v-on:changePage="changePage" class="mt-10">
         </pagination>
       </main>
-      <div v-else-if="bookmarks !== undefined && bookmarks.length <= 0" class="bookmark-list">
-        <h2 class="italic">
+      <main v-else-if="bookmarks !== undefined && bookmarks.length <= 0" class="bookmark-slist">
+        <h2>
           There are no bookmarks yet...
         </h2>
         <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button button--small mt-5">
-          Add a bookmark
+          Add one now
         </router-link>
-      </div>
-      <div v-else class="bookmark-list italic">
+      </main>
+      <main v-else class="bookmarks-list">
         <h2>
           Loading...
         </h2>
-      </div>
+      </main>
     </div>
   </div>
 </template>
@@ -108,7 +108,26 @@ export default {
 </script>
 
 <style lang="scss">
-.wrapper {
-  width: 50%;
-}
+  .subheader {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      h1 {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .wrapper {
+    display: flex;
+  }
+  .bookmarks-list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    &__count {
+      font-style: italic;
+    }
+  }
 </style>

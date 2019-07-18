@@ -1,36 +1,34 @@
 <template v-if="bookmarks">
   <aside class="filters">
-    <fieldset v-if="allCategories.length > 0" class="mb-5">
-      <legend class="font-bold mb-2">
-        Categories
-      </legend>
+    <fieldset v-if="allCategories.length > 0" class="mb-20">
+      <legend>Categories</legend>
       <div v-for="(category, index) in allCategories" v-bind:key="index">
-        <input type="checkbox" name="category" id="`category-${index}`"
-               v-bind:value="category"
+        <input type="checkbox"
+               name="category"
                v-model="activeCategories"
+               :id="`category-${index}`"
+               :value="category"
                @change="updateFilters(activeCategories, activeTags)">
-        <label for="`category-${index}`" class="ml-2">
+        <label :for="`category-${index}`">
           {{ category }}
         </label>
       </div>
     </fieldset>
     <fieldset v-if="allTags.length > 0" class="mb-10">
-      <legend class="font-bold mb-2">
-        Tags
-      </legend>
+      <legend>Tags</legend>
       <div v-for="(tag, index) in allTags" v-bind:key="index">
-        <input type="checkbox" name="tag" id="`tag-${index}`"
-               v-bind:value="tag" v-model="activeTags"
+        <input type="checkbox"
+               name="tag"
+               v-model="activeTags"
+               :id="`tag-${index}`"
+               :value="tag"
                @change="updateFilters(activeCategories, activeTags)">
-        <label for="`tag-${index}`" class="ml-2">
+        <label :for="`tag-${index}`">
           {{ tag }}
         </label>
       </div>
     </fieldset>
-    <a href="#" class="button button--small"
-       @click="resetFilters()">
-      Reset
-    </a>
+    <button class="button button--small mt-20" @click="resetFilters()">Reset</button>
   </aside>
 </template>
 
@@ -71,5 +69,9 @@ export default {
 <style lang="scss">
   .filters {
     width: 25%;
+  }
+  legend {
+    font-weight: 900;
+    margin-bottom: 10px;
   }
 </style>

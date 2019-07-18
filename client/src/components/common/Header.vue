@@ -1,7 +1,7 @@
 <template>
-  <header class="flex items-center mt-10">
-    <nav class="inline-block">
-      <router-link v-bind:to="{ name: 'BookmarkListing' }" class="font-bold uppercase text-xl mr-5">
+  <header>
+    <nav>
+      <router-link v-bind:to="{ name: 'BookmarkListing' }" class="brand">
         Bookmarkify
       </router-link>
     </nav>
@@ -13,3 +13,16 @@ export default {
   name: 'Header',
 };
 </script>
+
+<style lang="scss">
+  header {
+    margin: 50px 0;
+  }
+  .brand {
+    color: black;
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+</style>
