@@ -26,7 +26,7 @@
         <h2>
           There are no bookmarks yet...
         </h2>
-        <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button button--small mt-5">
+        <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button button--medium mt-5">
           Add one now
         </router-link>
       </main>
@@ -108,17 +108,6 @@ export default {
 </script>
 
 <style lang="scss">
-  .subheader {
-    display: flex;
-    justify-content: space-between;
-    @media (max-width: 767px) {
-      flex-direction: column;
-      align-items: flex-start;
-      h1 {
-        margin-bottom: 20px;
-      }
-    }
-  }
   .wrapper {
     display: flex;
   }

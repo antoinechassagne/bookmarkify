@@ -80,10 +80,10 @@
           </div>
         </div>
       </div>
-      <button class="button button--small" @click="editBookmark">
+      <button class="button button--medium" @click="editBookmark">
         Apply changes
       </button>
-      <button class="button button--small button--danger" @click="deleteBookmark(bookmark._id)">
+      <button class="button button--medium button--danger" @click="deleteBookmark(bookmark._id)">
         Delete
       </button>
     </div>

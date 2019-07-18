@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <button class="button button--small mt-10" @click="addBookmark">
+      <button class="button button--medium mt-10" @click="addBookmark">
         Create
       </button>
     </div>

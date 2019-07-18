@@ -1,11 +1,19 @@
 <template>
-  <div class="card mb-5">
-    <h3 class="text-xl font-bold">
-      {{ bookmark.title }}
-    </h3>
-    <ul v-if="bookmark.categories.length > 0" class="mb-5">
-      <li v-for="(category, index) in bookmark.categories" v-bind:key="index"
-          class="card__category uppercase text-sm text-gray-500 inline-block">
+  <div class="card mb-30">
+    <div class="card__header mb-10">
+      <h3 class="title-small">
+        {{ bookmark.title }}
+      </h3>
+      <router-link v-bind:to="{ name: 'BookmarkEdit', params: { id: bookmark._id } }"
+                   class="button button--small button--empty"
+                   ref="editButton">
+        Edit
+      </router-link>
+    </div>
+    <ul v-if="bookmark.categories.length > 0" class="mb-30">
+      <li v-for="(category, index) in bookmark.categories"
+          v-bind:key="index"
+          class="card__category">
         {{ category.name }}
       </li>
     </ul>
@@ -13,24 +21,16 @@
       {{ bookmark.description }}
     </p>
     <ul v-if="bookmark.tags.length > 0"
-        class="card__tags">
+        class="mt-20">
       <li v-for="(tag, index) in bookmark.tags" v-bind:key="index"
-          class="text-sm text-gray-500 inline-block pr-2">
+          class="card__tag">
         #{{ tag.name }}
       </li>
     </ul>
-    <router-link
-      v-bind:to="{ name: 'BookmarkEdit', params: { id: bookmark._id } }"
-      ref="editButton"
-      class="card__edit button button--xsmall button--empty mt-5">
-      Edit
-    </router-link>
-    <div class="flex justify-end">
-      <a v-bind:href="bookmark.url"
-         class="card__button button button--small" target="_blank">
-        Visit now
-      </a>
-    </div>
+    <a v-bind:href="bookmark.url"
+       class="button button--medium mt-20" target="_blank">
+      Visit now
+    </a>
   </div>
 </template>
 

@@ -28,7 +28,7 @@
         </label>
       </div>
     </fieldset>
-    <button class="button button--small mt-20" @click="resetFilters()">Reset</button>
+    <button class="button button--medium mt-20" @click="resetFilters()">Reset</button>
   </aside>
 </template>
 
