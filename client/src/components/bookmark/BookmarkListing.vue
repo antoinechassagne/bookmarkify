@@ -22,15 +22,16 @@
         <pagination :pagination="pagination" v-on:changePage="changePage" class="mt-10">
         </pagination>
       </main>
-      <main v-else-if="bookmarks !== undefined && bookmarks.length <= 0" class="bookmark-slist">
-        <h2>
+      <main v-else-if="bookmarks !== undefined && bookmarks.length <= 0"
+            class=" bookmarks-list bookmarks-list--center">
+        <h2 class="mb-20">
           There are no bookmarks yet...
         </h2>
         <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button button--medium mt-5">
           Add one now
         </router-link>
       </main>
-      <main v-else class="bookmarks-list">
+      <main v-else class="bookmarks-list bookmarks-list--center">
         <h2>
           Loading...
         </h2>
@@ -112,11 +113,16 @@ export default {
     display: flex;
   }
   .bookmarks-list {
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     width: 50%;
     &__count {
       font-style: italic;
+    }
+    &--center {
+      align-items: center;
+      justify-content: center;
     }
   }
 </style>
