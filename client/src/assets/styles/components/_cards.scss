@@ -15,6 +15,7 @@
     color: $grey;
     font-size: 0.9rem;
     text-transform: uppercase;
+    overflow-wrap: break-word;
 
     &:after {
       content: '-';
@@ -26,6 +27,12 @@
         display: none;
       }
     }
+
+    &--single {
+      &:after {
+        display: none;
+      }
+    }
   }
 
   &__tag {
@@ -33,5 +40,6 @@
     color: $grey;
     font-size: 0.9rem;
     padding-right: 5px;
+    overflow-wrap: break-word;
   }
 }

@@ -26,18 +26,27 @@
   }
 
   &--round {
-    padding: 0 0 3px;
-    width: 30px;
-    height: 30px;
+    font-size: 0.9rem;
+    padding: 0;
+    height: 26px;
+    width: 26px;
+    background-color: $danger;
+    border-color: $danger;
+
+    &:hover {
+      cursor: pointer;
+      background-color: white;
+      color: $danger;
+    }
   }
 
   &--danger {
-    background-color: #E53E3E;
-    border-color: #E53E3E;
+    background-color: $danger;
+    border-color: $danger;
 
     &:hover {
       background-color: white;
-      color: #E53E3E;
+      color: $danger;
     }
   }
 

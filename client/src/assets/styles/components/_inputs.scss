@@ -2,11 +2,21 @@
   width: 100%;
   color: black;
   padding: 10px 20px;
-  border: solid 1px lightgrey;
+  border: solid 2px lightgrey;
   border-radius: 5px;
+  box-sizing : border-box;
+  font-size: 1rem;
+
+  &:focus {
+    outline: 2px solid black;
+  }
 
   &--small {
     width: auto;
     padding: 5px 10px;
   }
+}
+
+.label {
+  display: inline-block;
 }

@@ -3,7 +3,7 @@
  * and registered space numbers.
  */
 $spaceNumbers: (5, 10, 20, 30, 60, 80);
-$sides: (top, bottom);
+$sides: (top, bottom, left, right);
 
 @each $space in $spaceNumbers {
   @each $side in $sides {
