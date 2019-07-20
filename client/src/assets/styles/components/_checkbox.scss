@@ -4,9 +4,9 @@ input[type="checkbox"] {
   & + label {
     position: relative;
     display: inline-block;
-    line-height: 20px;
+    line-height: 22px;
     padding-left: 32px;
-    margin: 3px 20px 3px 0;
+    margin: 4px 20px 4px 0;
   }
 
   & + label:before {
@@ -17,7 +17,7 @@ input[type="checkbox"] {
     left: 0;
     width: 20px;
     height: 20px;
-    border: 1px solid $grey;
+    border: 2px solid $lightgrey;
     border-radius: 3px;
     background: $white;
   }
