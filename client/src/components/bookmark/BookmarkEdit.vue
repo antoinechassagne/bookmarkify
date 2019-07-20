@@ -1,7 +1,7 @@
 <template>
   <div class="edit-bookmark-page">
-    <div class="flex items-center justify-between">
-      <h1 class="text-3xl mt-10 mb-10">
+    <div class="subheader mb-30">
+      <h1 class="title-medium">
         Edit a bookmark
       </h1>
       <router-link v-bind:to="{ name: 'BookmarkAdd' }" class="button">

@@ -1,25 +1,27 @@
 <template>
   <div class="add-bookmark-page">
-    <h1 class="text-3xl mt-10 mb-10">
-      Add a new bookmark
-    </h1>
+    <div class="subheader mb-30">
+      <h1 class="title-medium">
+        Add a new bookmark
+      </h1>
+    </div>
     <div class="form">
       <div class="mb-5">
-        <label for="url" class="font-bold block mb-2">
+        <label for="url" class="mb-5">
           URL
         </label>
         <input type="text" name="url" placeholder="Enter an URL" v-model="url" id="url"
         class="input">
       </div>
       <div class="mb-5">
-        <label for="title" class="font-bold block mb-2">
+        <label for="title" class="mb-5">
           Title
         </label>
         <input type="text" name="title" placeholder="Enter a title" v-model="title" id="title"
         class="input">
       </div>
       <div class="mb-5">
-        <label for="description" class="font-bold block mb-2">
+        <label for="description" class="mb-5">
           Description
         </label>
         <textarea rows="5" placeholder="Enter a description" v-model="description"
@@ -28,9 +30,9 @@
       </div>
       <div class="flex">
         <div class="mb-5 mr-20">
-        <span class="font-bold block mb-2">
-          Categories
-        </span>
+          <span class="mb-5">
+            Categories
+          </span>
           <ul v-if="categories.length > 0">
             <li v-for="(category, index) in categories" v-bind:key="index"
                 class="mb-3 flex justify-between">
