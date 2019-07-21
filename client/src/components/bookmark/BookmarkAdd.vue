@@ -37,10 +37,10 @@
             <ul v-if="categories.length > 0">
               <li v-for="(category, index) in categories" v-bind:key="index"
                   class="flex flex-row wrap space-between mb-5">
-                <span class="mr-5 card__category card__category--single">
+                <span class="mr-10 card__category card__category--single">
                   {{ category }}
                 </span>
-                <button class="button button--round" @click="removeCategory(index)">
+                <button class="button button--round button--danger" @click="removeCategory(index)">
                   ×
                 </button>
               </li>
@@ -49,9 +49,9 @@
           <div class="flex flex-row vertical-center">
             <input type="text" name="category" placeholder="Add a new category"
                    v-model="currentCategory" v-on:keyup.enter="addCategory"
-                   class="input input--small mr-5">
-            <button class="button button--small" @click="addCategory">
-              Add
+                   class="input input--small mr-10">
+            <button class="button button--round" @click="addCategory">
+              +
             </button>
           </div>
         </div>
@@ -66,7 +66,7 @@
               <span class="mr-5 card__tag">
                 #{{ tag }}
               </span>
-                <button class="button button--round" @click="removeTag(index)">
+                <button class="button button--round button--danger" @click="removeTag(index)">
                   ×
                 </button>
               </li>
@@ -74,9 +74,9 @@
           </div>
           <div class="flex flex-row vertical-center">
             <input type="text" name="tag" placeholder="Add a new tag" v-model="currentTag"
-                   v-on:keyup.enter="addTag" class="input input--small mr-5">
-            <button class="button button--small" @click="addTag">
-              Add
+                   v-on:keyup.enter="addTag" class="input input--small mr-10">
+            <button class="button button--round" @click="addTag">
+              +
             </button>
           </div>
         </div>

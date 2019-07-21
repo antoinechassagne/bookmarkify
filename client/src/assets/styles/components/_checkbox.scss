@@ -4,6 +4,7 @@ input[type="checkbox"] {
   & + label {
     position: relative;
     display: inline-block;
+    cursor: pointer;
     line-height: 22px;
     padding-left: 32px;
     margin: 4px 20px 4px 0;

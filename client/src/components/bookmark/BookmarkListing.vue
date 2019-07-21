@@ -32,9 +32,7 @@
         </router-link>
       </main>
       <main v-else class="bookmarks-list bookmarks-list--center">
-        <h2>
-          Loading...
-        </h2>
+        <Loader></Loader>
       </main>
     </div>
   </div>
@@ -45,11 +43,13 @@ import BookmarksService from '@/services/BookmarksService';
 import BookmarkFilters from '@/components/bookmark/BookmarkFilters';
 import BookmarkCard from '@/components/bookmark/BookmarkCard';
 import Pagination from '@/components/common/Pagination';
+import Loader from '@/components/common/Loader';
 
 export default {
   name: 'bookmarkListing',
   components: {
     Pagination,
+    Loader,
     BookmarkFilters,
     BookmarkCard,
   },
