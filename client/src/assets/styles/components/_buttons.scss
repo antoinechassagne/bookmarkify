@@ -1,18 +1,20 @@
 .button {
   display: inline-block;
-  color: white;
+  color: $white;
   text-decoration: none;
-  border: solid 1px black;
+  border: solid 1px $black;
   border-radius: 50px;
-  background-color: black;
+  background-color: $black;
   padding: 15px 20px;
   transition: all 0.3s;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  stroke: $white;
 
   &:hover {
     cursor: pointer;
-    background-color: white;
-    color: black;
+    background-color: $white;
+    color: $black;
+    stroke: $black;
   }
 
   &--medium {
@@ -32,13 +34,19 @@
     width: 26px;
   }
 
+  &--icon {
+    padding: 0;
+    height: 50px;
+    width: 50px;
+  }
+
   &--danger {
     background-color: $danger;
     border-color: $danger;
 
     &:hover {
       cursor: pointer;
-      background-color: white;
+      background-color: $white;
       color: $danger;
     }
   }
@@ -48,18 +56,18 @@
     border-color: $danger;
 
     &:hover {
-      background-color: white;
+      background-color: $white;
       color: $danger;
     }
   }
 
   &--empty {
-    background-color: white;
-    color: black;
+    background-color: $white;
+    color: $black;
 
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: $black;
+      color: $white;
     }
   }
 }

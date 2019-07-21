@@ -9,8 +9,7 @@
       </router-link>
     </div>
     <div class="wrapper">
-      <BookmarkFilters
-        v-on:updateFilters="updateFilters">
+      <BookmarkFilters v-on:updateFilters="updateFilters">
       </BookmarkFilters>
       <main v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmarks-list">
         <div v-if="bookmarksTotalCount > 0" class="bookmarks-list__count mb-30">
@@ -111,6 +110,9 @@ export default {
 <style lang="scss">
   .wrapper {
     display: flex;
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
   }
   .bookmarks-list {
     min-height: 50vh;
@@ -123,6 +125,9 @@ export default {
     &--center {
       align-items: center;
       justify-content: center;
+    }
+    @media (max-width: 991px) {
+      width: 100%;
     }
   }
 </style>

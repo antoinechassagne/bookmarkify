@@ -5,8 +5,7 @@
         {{ bookmark.title }}
       </h3>
       <router-link v-bind:to="{ name: 'BookmarkEdit', params: { id: bookmark._id } }"
-                   class="button button--small button--empty"
-                   ref="editButton">
+                   class="button button--small button--empty">
         Edit
       </router-link>
     </div>

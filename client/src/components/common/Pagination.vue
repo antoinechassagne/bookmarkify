@@ -4,12 +4,12 @@
       <li v-if="pagination.currentPage > 1">
         <a @click="changePage(pagination.currentPage - 1)"
            class="pagination__previous">
-          Previous
+          <
         </a>
       </li>
       <li v-else>
         <a class="pagination__previous pagination__previous--disable">
-          Previous
+          <
         </a>
       </li>
       <li v-for="page in pagination.lastPage"
@@ -23,12 +23,12 @@
       <li v-if="pagination.currentPage !== pagination.lastPage">
         <a @click="changePage(pagination.currentPage + 1)"
            class="pagination__next">
-            Next
+            >
         </a>
       </li>
       <li v-else>
         <a class="pagination__next pagination__next--disable">
-          Next
+          >
         </a>
       </li>
     </ul>

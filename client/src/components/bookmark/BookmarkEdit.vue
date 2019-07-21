@@ -173,5 +173,10 @@ export default {
   .form {
     margin-left: 25%;
     width: 50%;
+
+    @media (max-width: 991px) {
+      width: 100%;
+      margin: 0;
+    }
   }
 </style>

@@ -1,0 +1,55 @@
+.sidebar {
+  width: 25%;
+
+  @media (max-width: 991px) {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &__toggle {
+    display: none;
+    
+    @media (max-width: 991px) {
+      display: inline-block;
+    }
+  }
+  .filters {
+    width: 100%;
+
+    @media (max-width: 991px) {
+      display: none;
+    }
+
+    &--active {
+      display: block;
+    }
+
+    &__checkboxes {
+      @media (max-width: 991px) {
+        display: flex;
+
+        fieldset {
+          width: 50%;
+        }
+      }
+    }
+
+    &__legend {
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    &__reset {
+      @media (max-width: 991px) {
+        display: none;
+      }
+
+      &--active {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+
