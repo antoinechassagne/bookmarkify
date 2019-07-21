@@ -26,7 +26,7 @@
         #{{ tag.name }}
       </li>
     </ul>
-    <a v-bind:href="bookmark.url"
+    <a v-bind:href="`//${bookmark.url}`"
        class="button button--medium mt-20" target="_blank">
       Visit now
     </a>

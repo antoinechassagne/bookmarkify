@@ -9,7 +9,7 @@
       </router-link>
     </div>
     <div class="wrapper">
-      <div>
+      <div class="sidebar">
         <BookmarkSearch v-on:updateSearch="updateSearch"></BookmarkSearch>
         <BookmarkFilters v-on:updateFilters="updateFilters"></BookmarkFilters>
       </div>
@@ -135,7 +135,6 @@ export default {
     }
     &--center {
       align-items: center;
-      justify-content: center;
     }
     @media (max-width: 991px) {
       width: 100%;

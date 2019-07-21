@@ -1,5 +1,5 @@
 <template v-if="bookmarks">
-  <aside class="sidebar">
+  <aside>
     <button class="sidebar__toggle button button--icon mb-20" @click="toggleFilters">
       <svg role="img" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px"
            viewBox="0 0 24 24" aria-labelledby="controlsIconTitle" stroke-width="1"
