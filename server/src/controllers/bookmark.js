@@ -61,6 +61,13 @@ exports.fetchAll = async (req, res) => {
         filters.tags = {$elemMatch: {name: {$in: req.body.tags}}}
     };
 
+    // Search params
+    if (req.body.hasOwnProperty('search') && req.body.search !== '') {
+        const titleSearch = {title: { $regex: req.body.search, $options: "i" }};
+        const descriptionSearch = {description: { $regex: req.body.search, $options: "i" }};
+        filters.$or = [titleSearch, descriptionSearch];
+    }
+
     let count = await countTotalBookmarks(filters);
 
     // Query

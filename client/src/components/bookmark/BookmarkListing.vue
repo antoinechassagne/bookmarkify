@@ -9,6 +9,7 @@
       </router-link>
     </div>
     <div class="wrapper">
+      <BookmarkSearch v-on:updateSearch="updateSearch"></BookmarkSearch>
       <BookmarkFilters v-on:updateFilters="updateFilters">
       </BookmarkFilters>
       <main v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmarks-list">
@@ -40,6 +41,7 @@
 <script>
 import BookmarksService from '@/services/BookmarksService';
 import BookmarkFilters from '@/components/bookmark/BookmarkFilters';
+import BookmarkSearch from '@/components/bookmark/BookmarkSearch';
 import BookmarkCard from '@/components/bookmark/BookmarkCard';
 import Pagination from '@/components/common/Pagination';
 import Loader from '@/components/common/Loader';
@@ -50,6 +52,7 @@ export default {
     Pagination,
     Loader,
     BookmarkFilters,
+    BookmarkSearch,
     BookmarkCard,
   },
   data() {
@@ -63,6 +66,7 @@ export default {
       },
       activeCategories: [],
       activeTags: [],
+      search: '',
     };
   },
   async mounted() {
@@ -76,6 +80,7 @@ export default {
         limit: this.pagination.perPage,
         categories: this.activeCategories,
         tags: this.activeTags,
+        search: this.search,
       });
 
       this.bookmarks = response.data.bookmarks;
@@ -102,6 +107,11 @@ export default {
     getNumberOfPages() {
       const numberOfPages = Math.ceil(this.bookmarksTotalCount / this.pagination.perPage);
       this.pagination.lastPage = numberOfPages >= 1 ? numberOfPages : 1;
+    },
+    async updateSearch(search) {
+      this.search = search;
+      await this.getBookmarks();
+      this.getNumberOfPages();
     },
   },
 };
