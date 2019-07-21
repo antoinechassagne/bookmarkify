@@ -1,5 +1,6 @@
 <template>
-  <input type="search" class="search" v-model="search" @change="updateSearch(search)">
+  <input type="search" class="input input--small input--search mb-20" placeholder="Search..."
+         v-model="search" @change="updateSearch(search)">
 </template>
 
 <script>

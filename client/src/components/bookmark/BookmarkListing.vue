@@ -9,9 +9,10 @@
       </router-link>
     </div>
     <div class="wrapper">
-      <BookmarkSearch v-on:updateSearch="updateSearch"></BookmarkSearch>
-      <BookmarkFilters v-on:updateFilters="updateFilters">
-      </BookmarkFilters>
+      <div>
+        <BookmarkSearch v-on:updateSearch="updateSearch"></BookmarkSearch>
+        <BookmarkFilters v-on:updateFilters="updateFilters"></BookmarkFilters>
+      </div>
       <main v-if="bookmarks !== undefined && bookmarks.length > 0" class="bookmarks-list">
         <div v-if="bookmarksTotalCount > 0" class="bookmarks-list__count mb-30">
           {{ bookmarksTotalCount }} bookmarks found
