@@ -87,16 +87,13 @@ export default {
       this.bookmarks = response.data.bookmarks;
       this.bookmarksTotalCount = response.data.count;
     },
-    async deleteBookmark(id) {
-      await BookmarksService.deleteBookmark(id);
-      this.getBookmarks();
-      this.$router.push({
-        name: 'Bookmarks',
-      });
-    },
     changePage(page) {
       this.pagination.currentPage = page;
       this.getBookmarks();
+    },
+    getNumberOfPages() {
+      const numberOfPages = Math.ceil(this.bookmarksTotalCount / this.pagination.perPage);
+      this.pagination.lastPage = numberOfPages >= 1 ? numberOfPages : 1;
     },
     async updateFilters(categories, tags) {
       this.activeCategories = categories;
@@ -104,10 +101,6 @@ export default {
       this.pagination.currentPage = 1;
       await this.getBookmarks();
       this.getNumberOfPages();
-    },
-    getNumberOfPages() {
-      const numberOfPages = Math.ceil(this.bookmarksTotalCount / this.pagination.perPage);
-      this.pagination.lastPage = numberOfPages >= 1 ? numberOfPages : 1;
     },
     async updateSearch(search) {
       this.search = search;

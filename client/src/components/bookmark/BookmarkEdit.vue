@@ -87,7 +87,7 @@
       <button class="button button--medium" @click="editBookmark">
         Apply changes
       </button>
-      <button class="button button--medium button--danger" @click="deleteBookmark(bookmark._id)">
+      <button class="button button--medium button--danger" @click="deleteBookmark()">
         Delete
       </button>
     </div>
@@ -101,6 +101,7 @@ export default {
   name: 'BookmarkEdit',
   data() {
     return {
+      id: '',
       url: '',
       title: '',
       description: '',
@@ -142,6 +143,7 @@ export default {
       this.url = response.data.bookmark.url;
       this.title = response.data.bookmark.title;
       this.description = response.data.bookmark.description;
+      this.id = response.data.bookmark.id;
       if (response.data.bookmark.categories !== undefined) {
         response.data.bookmark.categories.forEach(el => this.categories.push(el.name));
       } else {
@@ -164,6 +166,12 @@ export default {
       });
 
       this.$router.push({ name: 'BookmarkListing' });
+    },
+    async deleteBookmark() {
+      await BookmarksService.deleteBookmark(this.$route.params.id);
+      this.$router.push({
+        name: 'BookmarkListing',
+      });
     },
   },
 };
