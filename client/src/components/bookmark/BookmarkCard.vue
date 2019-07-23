@@ -16,7 +16,7 @@
         {{ category.name }}
       </li>
     </ul>
-    <p>
+    <p class="card__description">
       {{ bookmark.description }}
     </p>
     <ul v-if="bookmark.tags.length > 0"

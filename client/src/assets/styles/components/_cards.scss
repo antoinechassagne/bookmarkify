@@ -35,6 +35,10 @@
     }
   }
 
+  &__description {
+    line-height: 1.4;
+  }
+
   &__tag {
     display: inline-block;
     color: $grey;
