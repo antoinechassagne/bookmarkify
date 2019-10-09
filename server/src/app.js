@@ -24,9 +24,5 @@ app.use(cors());
 
 app.use('/.netlify/functions/server', bookmark);  // path must route to lambda
 
-app.listen(8081, () => {
-    console.log('Server launched on port 8081');
-});
-
 module.exports = app;
 module.exports.handler = serverless(app);
