@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default() => axios.create({
-  baseURL: 'http://localhost:8081/.netlify/functions/server',
+  baseURL: 'http://localhost:8081/api',
 });

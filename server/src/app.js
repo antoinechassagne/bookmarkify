@@ -1,5 +1,4 @@
 const express = require('express');
-const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -22,7 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
-app.use('/.netlify/functions/server', bookmark);  // path must route to lambda
+app.use('/api', bookmark);
 
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(8081, () => {
+    console.log('Server launched on port 8081');
+});
