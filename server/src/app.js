@@ -1,4 +1,5 @@
 const express = require('express');
+const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -29,3 +30,6 @@ app.use('/api', bookmark);
 app.listen(8081, () => {
     console.log('Server launched on port 8081');
 });
+
+module.exports = app;
+module.exports.handler = serverless(app);
