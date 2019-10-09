@@ -1,0 +1,27 @@
+{
+  "name": "bookmarkify",
+  "version": "1.0.0",
+  "description": "A bookmark system",
+  "main": "index.js",
+  "scripts": {
+    "deploy:heroku": "git push heroku master",
+    "install": "npm run install:client && npm run install:server",
+    "install:client": "(cd ./client && npm install)",
+    "install:server": "(cd ./server && npm install)",
+    "build:client": "(cd ./client && npm run build)",
+    "start:dev": "(npm run start:client && npm run start:server)",
+    "start": "(npm install && npm build:client && npm start:server)",
+    "start:client": "(cd ./server && npm run dev)",
+    "start:server": "(cd ./server && npm run start)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoinechassagne/bookmarkify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoinechassagne/bookmarkify/issues"
+  },
+  "homepage": "https://github.com/antoinechassagne/bookmarkify#readme"
+}
