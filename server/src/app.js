@@ -23,6 +23,7 @@ app.use(cors());
 
 app.use('/api', bookmark);
 
-app.listen(8081, () => {
-    console.log('Server launched on port 8081');
+const port = process.env.PORT || 8081;
+app.listen(port, () => {
+    console.log('Server launched on port' port);
 });
