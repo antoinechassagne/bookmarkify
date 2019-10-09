@@ -13,7 +13,7 @@ const config = JSON.parse(configFile);
 const app = express();
 
 // Database connection --------------------------------------------------------
-const databaseURI = config.databaseURI;
+const databaseURI = process.env.DATABASEURI;
 mongoose.connect(databaseURI, {useNewUrlParser: true});
 const db = mongoose.connection;
 
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
-app.use('/api', bookmark);
+app.use('/.netlify/functions/server', bookmark);  // path must route to lambda
 
 app.listen(8081, () => {
     console.log('Server launched on port 8081');

@@ -3,7 +3,6 @@ const router = express.Router();
 const bookmarkController = require('../controllers/bookmark');
 
 // Routes
-app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 router.post('/bookmarks/add', bookmarkController.create);
 
