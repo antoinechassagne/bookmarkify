@@ -6,9 +6,6 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const bookmark = require('./routes/bookmark');
 
-const configFile = fs.readFileSync('config.json');
-const config = JSON.parse(configFile);
-
 // App initialization ---------------------------------------------------------
 const app = express();
 
