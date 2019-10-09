@@ -2,7 +2,7 @@
   "name": "bookmarkify-server",
   "version": "1.0.0",
   "description": "A bookmarks system",
-  "main": "index.js",
+  "main": "functions/server.js",
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js src/app.js",
     "netlify-start": "netlify-lambda build src",
@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.5.4",
+    "netlify-lambda": "^1.6.3",
     "serverless-http": "^2.3.0"
   },
   "devDependencies": {

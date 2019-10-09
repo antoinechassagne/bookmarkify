@@ -1,0 +1,3 @@
+[start]
+  command = "cd server && npm install && npm run netlify-start"
+  functions = "functions"
